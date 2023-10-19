@@ -39,6 +39,13 @@ const ControlPresupuesto = ({
         }
     }
 
+    const formatearCantidad = (cantidad) => {
+        return cantidad.toLocaleString('es-CL', {
+            style: 'currency',
+            currency: 'CLP'
+        })
+    }
+
     return (
         <div className='contenedor-presupuesto contenedor sombra dos-columnas'>
             <div>
@@ -62,15 +69,15 @@ const ControlPresupuesto = ({
                     Resetear App
                 </button>
                 <p>
-                    <span>Presupuesto: </span>${presupuesto}
+                    <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
                 </p>
 
                 <p className={`${disponible < 0 ? "negativo" : ""}`}>
-                    <span>Disponible: </span>${disponible}
+                    <span>Disponible: </span>{formatearCantidad(disponible)}
                 </p>
 
                 <p>
-                    <span>Gastado: </span>${gastado}
+                    <span>Gastado: </span>{formatearCantidad(gastado)}
                 </p>
             </div>
         </div>
