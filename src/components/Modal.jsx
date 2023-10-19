@@ -51,6 +51,16 @@ const Modal = ({
         guardarGasto({nombre, cantidad, categoria, id, fecha})
     }
 
+    useEffect(() => {
+        // Desplazar la página hacia arriba cuando se abre el modal
+        document.body.style.overflow = "hidden"; // Evita que la página se desplace
+        window.scrollTo(0, 0); // Desplaza la página hacia arriba
+        return () => {
+          // Restablece el comportamiento de desplazamiento al cerrar el modal
+          document.body.style.overflow = "auto";
+        };
+      }, []);
+
   return (
     <div className="modal">
         <div className="cerrar-modal">
